@@ -21,7 +21,7 @@ GLt$
 
 we can spot fome words like flag, okey lets try to grep it. 
 
-0x890$ strings disk.img | grep flag{
+<b>0x890$ strings disk.img | grep flag{</b>
                   <photoshop:LayerName>flag{dis_week_evry_week_dnt_be_securty_weak}</photoshop:LayerName>
                   <photoshop:LayerText>flag{dis_week_evry_week_dnt_be_securty_weak}</photoshopTOSHOP
                   
