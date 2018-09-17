@@ -1,6 +1,10 @@
 Forensics
 simple_recovery
 
+Solved : 306/1448
+Difficulty : ✦✧✧✧✧
+
+
 Simple Recovery Try to recover the data from these RAID 5 images!
 
 after downloading the 2 images, and extracting them ,doing some strings and file commands on them 
