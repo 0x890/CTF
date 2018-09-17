@@ -5,12 +5,12 @@ Simple Recovery Try to recover the data from these RAID 5 images!
 
 after downloading the 2 images, and extracting them ,doing some strings and file commands on them 
 
-0x890$ file disk.img
+<b>0x890$ file disk.img</b>
 disk.img: Hitachi SH big-endian COFF object, not stripped
 
 actualiy its a HITASHI COFF object and not stripped, let's try to see strings on one of the files. 
 
-0x890$ strings disk.img
+<b>0x890$ strings disk.img</b>
 EFI PART
 XpFE?
 fXfX
