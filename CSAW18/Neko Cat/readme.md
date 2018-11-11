@@ -135,9 +135,10 @@ we have race condition here but we can use the url previewer to read it for us
 
 let's try 
 > [link]http://127.0.0.1:5000/flaginfo
+
 and we got nothing ??? hmmmmmm
 
-![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/112077b8-4612-4b13-a12f-63e2d133757c.png)
+![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/d154e42c-bf5f-4801-8799-7badd913f793.png)
 
 after another dig in source we see that flaginfo is filtred 
 > app.py Line:13
@@ -182,5 +183,6 @@ that abuse url parsing in diffrent programing languages , even browsers
 
 [A New Era of SSRF - Exploiting URL Parser in Trending Programming Languages!](https://www.blackhat.com/docs/us-17/thursday/us-17-Tsai-A-New-Era-Of-SSRF-Exploiting-URL-Parser-In-Trending-Programming-Languages.pdf)
 
+after reading this paper if figure out how to push the 
 
 
