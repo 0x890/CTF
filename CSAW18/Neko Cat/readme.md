@@ -19,3 +19,4 @@ we notice that challange uses Python Flask
 so let's create account and try to see what's happen there 
 http://web.chal.csaw.io:1003/register
 
+![NikoCat](https://screenshots.firefox.com/lXnnGUgeYqqJU45q/web.chal.csaw.io)
