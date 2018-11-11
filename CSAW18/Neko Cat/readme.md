@@ -28,3 +28,30 @@ we try to post link but we can see only verfied users can preview link
 if verified_user(session, request.session.get('username'))[0]:
     preview = get_post_preview(link)
  ```
+so the idea here is to get permession of verfied user in plateform
+we can trigger an XSS attack to steal cookies from admin maybe
+but when we dig more in the source code we see there is CSP rules implemented
+> app.py Line:51
+```python
+def apply_csp(f):
+    @wraps(f)
+    def decorated_func(*args, **kwargs):
+        resp = f(*args, **kwargs)
+        csp = "; ".join([
+                "default-src 'self' 'unsafe-inline'",
+                "style-src " + " ".join(["'self'",
+                                         "*.bootstrapcdn.com",
+                                         "use.fontawesome.com"]),
+                "font-src " + "use.fontawesome.com",
+                "script-src " + " ".join(["'unsafe-inline'",
+                                          "'self'",
+                                          "cdnjs.cloudflare.com",
+                                          "*.bootstrapcdn.com",
+                                          "code.jquery.com"]),
+                "connect-src " + "*"
+              ])
+        resp.headers["Content-Security-Policy"] = csp
+
+        return resp
+    return decorated_func
+     ```
