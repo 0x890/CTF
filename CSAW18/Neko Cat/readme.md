@@ -22,7 +22,7 @@ http://web.chal.csaw.io:1003/register
 ![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/ae6ec98e-8b7c-4909-9fc6-a2c6fe880bf5.png)
 
 we try to post link but we can see only verfied users can preview link 
-```
+```python
 def newpost(request):
     post = request.form.get('submission-text')
     if (len(post) > 280):
