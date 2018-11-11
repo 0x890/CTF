@@ -14,3 +14,6 @@ Link: http://web.chal.csaw.io:1003
 # Walkthrough
 description provide us the source code of the challenge 
 [flagon.zip](https://ctf.csaw.io/files/a75d5b38afc3d477873e8ce01c468d85/flagon.zip)
+
+we notice that challange uses Python Flask
+so let's create account and try to see what's happen there 
