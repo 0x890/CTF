@@ -134,7 +134,7 @@ it will be rendred if the ip adress accssed from is localhost
 we have race condition here but we can use the url previewer to read it for us 
 
 let's try 
-> [link]http://127.0.0.1/flaginfo
+> [link]http://127.0.0.1:5000/flaginfo
 and we got nothing ??? hmmmmmm
 
 ![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/112077b8-4612-4b13-a12f-63e2d133757c.png)
@@ -181,5 +181,6 @@ so url been parsed , there is bug discovered by [Orange Tsai](https://twitter.co
 that abuse url parsing in diffrent programing languages , even browsers 
 
 [A New Era of SSRF - Exploiting URL Parser in Trending Programming Languages!](https://www.blackhat.com/docs/us-17/thursday/us-17-Tsai-A-New-Era-Of-SSRF-Exploiting-URL-Parser-In-Trending-Programming-Languages.pdf)
+
 
 
