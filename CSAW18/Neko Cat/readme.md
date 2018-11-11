@@ -22,26 +22,8 @@ http://web.chal.csaw.io:1003/register
 ![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/ae6ec98e-8b7c-4909-9fc6-a2c6fe880bf5.png)
 
 we try to post link but we can see only verfied users can preview link 
+app.py Line:152
 ```python
-def newpost(request):
-    post = request.form.get('submission-text')
-    if (len(post) > 280):
-        return redirect('/')
-
-    preview = None
-    link = None
-
-    for word in post.split(' '):
-        if word.startswith('[link]'):
-            link = " ".join(word.split('[link]')[1:]).strip()
-            if verified_user(session, request.session.get('username'))[0]:
-                preview = get_post_preview(link)
-            link = link
-            break
-
-    post = post.replace('[link]', '')
-
-    add_post(session, request.session.get('username'), post, link, preview)
-
-    return redirect('/')
-    ```
+if verified_user(session, request.session.get('username'))[0]:
+    preview = get_post_preview(link)
+ ```
