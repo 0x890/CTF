@@ -55,3 +55,7 @@ def apply_csp(f):
         return resp
     return decorated_func
 ```
+CSP is allowing javascript inline resources
+so we can excute XSS in URL
+
+![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/e1458bad-b01f-4941-ba36-9c2ebb1e2020.png)
