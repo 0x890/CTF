@@ -59,3 +59,15 @@ CSP is allowing javascript inline resources
 so we can excute XSS in URL
 
 ![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/e1458bad-b01f-4941-ba36-9c2ebb1e2020.png)
+
+> but hold on xss triggred on when admin click on link
+
+after another dig in plateform we noticed missing part 
+```python
+@app.route('/report')
+@apply_csp
+def report(request):
+    #: neko checks for naughtiness
+    #: neko likes links
+    pass
+```
