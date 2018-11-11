@@ -176,4 +176,11 @@ we see this commented line
 and this one 
 > scheme, netloc, path, query, fragment = url_parse(url)
 
-so url been parsed , there is bug discovered by [Orange Tsai]https://twitter.com/orange_8361?lang=en
+so url been parsed , there is bug discovered by [Orange Tsai](https://twitter.com/orange_8361?lang=en)
+
+that abuse url parsing in diffrent programing languages , even browsers 
+
+[A New Era of SSRF 
+-
+Exploiting URL Parser in 
+Trending Programming Languages!](https://www.blackhat.com/docs/us-17/thursday/us-17-Tsai-A-New-Era-Of-SSRF-Exploiting-URL-Parser-In-Trending-Programming-Languages.pdf)
