@@ -180,7 +180,6 @@ so url been parsed , there is bug discovered by [Orange Tsai](https://twitter.co
 
 that abuse url parsing in diffrent programing languages , even browsers 
 
-[A New Era of SSRF 
--
-Exploiting URL Parser in 
-Trending Programming Languages!](https://www.blackhat.com/docs/us-17/thursday/us-17-Tsai-A-New-Era-Of-SSRF-Exploiting-URL-Parser-In-Trending-Programming-Languages.pdf)
+[A New Era of SSRF - Exploiting URL Parser in Trending Programming Languages!](https://www.blackhat.com/docs/us-17/thursday/us-17-Tsai-A-New-Era-Of-SSRF-Exploiting-URL-Parser-In-Trending-Programming-Languages.pdf)
+
+
