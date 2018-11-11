@@ -1,4 +1,5 @@
-# CSAW CTF Final Round 2018 : NekoCat WEB 500 
+# NekoCat WEB 500 
+![enter image description here](http://web.chal.csaw.io:1003/static/favicon.ico)
 ## Difficulty: ★★★★★
 
 Link: http://web.chal.csaw.io:1003
