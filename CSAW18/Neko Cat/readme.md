@@ -1,5 +1,5 @@
 # NekoCat WEB 500 
-![NikoCat](http://web.chal.csaw.io:1003/static/favicon.ico)
+![NekoCat](http://web.chal.csaw.io:1003/static/favicon.ico)
 ## Difficulty: ★★★★★
 
 Link: http://web.chal.csaw.io:1003
@@ -19,7 +19,7 @@ we notice that challange uses Python Flask
 so let's create account and try to see what's happen there 
 http://web.chal.csaw.io:1003/register
 
-![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/ae6ec98e-8b7c-4909-9fc6-a2c6fe880bf5.png)
+![NekoCat](https://screenshotscdn.firefoxusercontent.com/images/ae6ec98e-8b7c-4909-9fc6-a2c6fe880bf5.png)
 
 we try to post link but we can see only verfied users can preview link 
 
@@ -58,7 +58,7 @@ def apply_csp(f):
 CSP is allowing javascript inline resources
 so we can excute XSS in URL
 
-![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/e1458bad-b01f-4941-ba36-9c2ebb1e2020.png)
+![NekoCat](https://screenshotscdn.firefoxusercontent.com/images/e1458bad-b01f-4941-ba36-9c2ebb1e2020.png)
 
 > but hold on xss triggred on when admin click on link
 
@@ -93,14 +93,14 @@ Upgrade-Insecure-Requests: 1
 
 > Bingo we have the verfied user session so we can preview sites now 
 
-![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/0b810f23-03d8-4889-80da-559d79829b1f.png)
+![NekoCat](https://screenshotscdn.firefoxusercontent.com/images/0b810f23-03d8-4889-80da-559d79829b1f.png)
 
 lets try to preview site 
 > [link]http://www.google.com
 
 it works
 
-![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/8b72962e-0868-4c32-8e89-e2442588fb7d.png)
+![NekoCat](https://screenshotscdn.firefoxusercontent.com/images/8b72962e-0868-4c32-8e89-e2442588fb7d.png)
 
 we noticed from captured admin request that refrer is 
 
@@ -138,7 +138,7 @@ let's try
 
 and we got nothing ??? hmmmmmm
 
-![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/d154e42c-bf5f-4801-8799-7badd913f793.png)
+![NekoCat](https://screenshotscdn.firefoxusercontent.com/images/d154e42c-bf5f-4801-8799-7badd913f793.png)
 
 after another dig in source we see that flaginfo is filtred 
 > app.py Line:13
@@ -193,7 +193,7 @@ and bingo we got the environment variables with secret key
 
 > SECRET_KEY = 'superdupersecretflagonkey'
 
-![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/9ef38443-ae5d-4018-9b11-b16302746489.png)
+![NekoCat](https://screenshotscdn.firefoxusercontent.com/images/9ef38443-ae5d-4018-9b11-b16302746489.png)
 
 so we did fine with all this steps , challenge main goal is to read flag located in flag.txt
 
@@ -252,7 +252,7 @@ print(value)
 output:
 > x9WxLcbqt6K+XTRjOc/qLId9oaM=?name=gANYCgAAADB4ZGVhZGJlZWZxAC4=&username=gANYDQAAAG1lb3dfMzI2ZGNhZTVxAC4=
 let's update our session and see the changes now 
-![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/345e4fb3-f290-47fd-a4f8-60743ee88d2c.png)
+![NekoCat](https://screenshotscdn.firefoxusercontent.com/images/345e4fb3-f290-47fd-a4f8-60743ee88d2c.png)
 
 nice name changed ^^
 
@@ -281,7 +281,8 @@ output:
 > 1YXfVvm1SHcNNZm/KXpktHC/RnM=?name=gANjc3VicHJvY2VzcwpjaGVja19vdXRwdXQKcQBdcQEoWAMAAABjYXRxAlgIAAAAZmxhZy50eHRxA2WFcQRScQUu&username=gANYDQAAAG1lb3dfMzI2ZGNhZTVxAC4=
 
 and bingoo here is the flag ^^
-![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/b8cd7218-eb7a-4c8e-bfec-1e23d81f9e2f.png)
+
+![NekoCat](https://screenshotscdn.firefoxusercontent.com/images/b8cd7218-eb7a-4c8e-bfec-1e23d81f9e2f.png)
 
 ##flag{werks_on_my_box}
 
