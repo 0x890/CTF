@@ -102,5 +102,78 @@ it works
 
 ![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/8b72962e-0868-4c32-8e89-e2442588fb7d.png)
 
+we noticed from captured admin request that refrer is 
 
+> Referer: http://127.0.0.1:5000/post?id=20762&instance=c7d3c508-1b2a-481e-a83e-5e3214938bc5
 
+running on localhost 
+and there is a route for reading environment variables called flaginfo
+
+> flagon.py Line:65
+```python
+flaginfo_route = "/flaginfo"
+        self.routes[flaginfo_route] = flagoninfo
+        self.url_map.add(Rule(flaginfo_route, endpoint=flaginfo_route))
+```
+
+and the function flagoninfo()
+> flagon.py Line:65
+```python
+def flagoninfo(request):
+    if request.remote_addr != "127.0.0.1":
+        return render_template("404.html")
+
+    info = {
+        "system": " ".join(os.uname()),
+        "env": str(os.environ)
+    }
+
+    return render_template("flaginfo.html", info_dict=info)
+```
+it will be rendred if the ip adress accssed from is localhost
+we have race condition here but we can use the url previewer to read it for us 
+
+let's try 
+> [link]http://127.0.0.1/flaginfo
+and we got nothing ??? hmmmmmm
+
+![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/112077b8-4612-4b13-a12f-63e2d133757c.png)
+
+after another dig in source we see that flaginfo is filtred 
+> app.py Line:13
+```python
+def get_post_preview(url):
+    scheme, netloc, path, query, fragment = url_parse(url)
+
+    # No oranges allowed
+    if scheme != 'http' and scheme != 'https':
+        return None
+
+    if '..' in path:
+        return None
+
+    if path.startswith('/flaginfo'):
+        return None
+
+    try:
+        r = requests.get(url, allow_redirects=False)
+    except Exception:
+        return None
+
+    soup = BeautifulSoup(r.text, 'html.parser')
+    if soup.body:
+        result = ''.join(soup.body.findAll(text=True)).strip()
+        result = ' '.join(result.split())
+        return result[:280]
+
+    return None
+```
+
+we see this commented line 
+
+> # No oranges allowed
+
+and this one 
+> scheme, netloc, path, query, fragment = url_parse(url)
+
+so url been parsed , there is bug discovered by [Orange Tsai]https://twitter.com/orange_8361?lang=en
